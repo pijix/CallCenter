@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using CallCenter.CORE.Domain;
 using CallCenter.DAL;
 
@@ -22,7 +23,7 @@ namespace CallCenter.Application
         /// <returns>Lista de clientes</returns>
         public List<Client> GetAll()
         {
-            throw new NotImplementedException();
+            return _dbContext.Clients.ToList();
         }
 
 
@@ -30,10 +31,10 @@ namespace CallCenter.Application
         /// Método que retorna una cliente
         /// </summary>
         /// <param name="clientId">identificador del cliente</param>
-        /// <returns>Equipo</returns>
+        /// <returns>Cliete</returns>
         public Client GetById(Guid clientId)
         {
-            throw new NotImplementedException();
+            return _dbContext.Clients.FirstOrDefault(a => a.Id == clientId);
         }
 
         /// <summary>
@@ -43,7 +44,7 @@ namespace CallCenter.Application
         /// <returns>Lista de clientes</returns>
         public List<Client> GetByName(string name)
         {
-            throw new NotImplementedException();
+            return _dbContext.Clients.Where(a => a.Name.Contains(name)).ToList();
         }
 
         /// <summary>
@@ -53,7 +54,16 @@ namespace CallCenter.Application
         /// <returns>El equipo añadido</returns>
         public Client Add(Client client)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var newClient = _dbContext.Clients.Add(client);
+                _dbContext.SaveChanges();
+                return newClient;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al añadir el Cliente " + ex.Message);
+            }
         }
 
 
@@ -64,7 +74,20 @@ namespace CallCenter.Application
         /// <returns>El cliente añadido</returns>
         public Client Update(Client client)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var clientExist = GetById(client.Id);
+                if (clientExist == null) throw new Exception("Cliente inexistente, no se puede editar...");
+                clientExist.Mail = client.Mail;
+                clientExist.Name = client.Name;
+                clientExist.Equipments = client.Equipments;
+                _dbContext.SaveChanges();
+                return client;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error Editando el Cliente " + ex.Message);
+            }
         }
 
         /// <summary>
@@ -74,7 +97,19 @@ namespace CallCenter.Application
         /// <returns>true o false por si se elimino correctamente</returns>
         public bool Delete(Guid clientId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var clientExist = GetById(clientId);
+                if (clientExist == null) throw new Exception("Cliente inexistente, no se puede eliminar...");
+                _dbContext.Clients.Remove(clientExist);
+                _dbContext.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error eliminando Cliente " + ex.Message);
+            }
+
         }
 
     }
