@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using CallCenter.CORE.Domain;
 using CallCenter.DAL;
@@ -23,7 +24,7 @@ namespace CallCenter.Application
         /// <returns>Lista de clientes</returns>
         public List<Client> GetAll()
         {
-            return _dbContext.Clients.ToList();
+            return _dbContext.Clients.Include(e=> e.Equipments).ToList();
         }
 
 
@@ -34,7 +35,7 @@ namespace CallCenter.Application
         /// <returns>Cliete</returns>
         public Client GetById(Guid clientId)
         {
-            return _dbContext.Clients.FirstOrDefault(a => a.Id == clientId);
+            return _dbContext.Clients.Include(e=> e.Equipments).FirstOrDefault(a => a.Id == clientId);
         }
 
         /// <summary>
@@ -44,7 +45,7 @@ namespace CallCenter.Application
         /// <returns>Lista de clientes</returns>
         public List<Client> GetByName(string name)
         {
-            return _dbContext.Clients.Where(a => a.Name.Contains(name)).ToList();
+            return _dbContext.Clients.Include(e => e.Equipments).Where(a => a.Name.Contains(name)).ToList();
         }
 
         /// <summary>
