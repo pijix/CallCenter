@@ -71,11 +71,9 @@ namespace CallCenter.Application
         /// <summary>
         /// Permite añdir una Incidencia
         /// </summary>
-        /// <param name="userId">identificador del usuario</param>
-        /// <param name="clientId">identificador del usuario</param>
-        /// <param name="equipmentId">identificador del usuario</param>       
+        /// <param name="incidence">entidad incidence</param>       
         /// <returns>La incidencia añadida</returns>
-        public Incidence Add(Guid userId, Guid clientId, Guid equipmentId)
+        public Incidence Add(Incidence incidence)
         {
             throw new NotImplementedException();
         }
@@ -84,9 +82,9 @@ namespace CallCenter.Application
         /// <summary>
         /// Permite editar una Incidencia
         /// </summary>
-        /// <param name="incidenceId">identificador de la incidencia</param>    
+        /// <param name="incidence">entidad</param>    
         /// <returns>La incidencia editada</returns>
-        public Incidence Update(Guid incidenceId)
+        public Incidence Update(Incidence incidence)
         {
             throw new NotImplementedException();
         }

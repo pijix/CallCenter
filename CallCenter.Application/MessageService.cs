@@ -60,7 +60,7 @@ namespace CallCenter.Application
         /// <summary>
         /// Método para añadir un mensaje
         /// </summary>
-        /// <param name="message">Id Usuario</param>
+        /// <param name="message">entidad</param>
         /// <returns>Deveuelve el mensage añadido</returns>
         public Message Add(Message message)
         {
@@ -70,9 +70,9 @@ namespace CallCenter.Application
         /// <summary>
         /// Método para editar un mensaje
         /// </summary>
-        /// <param name="messageId">Id de Cliente</param>
+        /// <param name="message">enditdad</param>
         /// <returns>Mensaje Editado</returns>
-        public Message Update(Guid messageId)
+        public Message Update(Message message)
         {
             throw new NotImplementedException();
         }
