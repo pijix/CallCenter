@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using CallCenter.CORE.Domain;
 using CallCenter.DAL;
 
 namespace CallCenter.Application
 {
-    class ClientService
+    internal class ClientService
     {
 
         private DBContext _dbContext;
@@ -38,6 +36,15 @@ namespace CallCenter.Application
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Método que busca clientes
+        /// </summary>
+        /// <param name="name">texto a buscar</param>
+        /// <returns>Lista de clientes</returns>
+        public List<Client> GetByName(string name)
+        {
+            throw new NotImplementedException();
+        }
 
         /// <summary>
         /// Permite añdir un cliente
@@ -71,4 +78,5 @@ namespace CallCenter.Application
         }
 
     }
+
 }
