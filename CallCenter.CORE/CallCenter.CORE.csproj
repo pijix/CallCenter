@@ -39,7 +39,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Domain\Client.cs" />
     <Compile Include="Domain\Equipment.cs" />
     <Compile Include="Domain\Incidence.cs" />
     <Compile Include="Domain\IncidenceStatus.cs" />

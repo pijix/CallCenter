@@ -21,8 +21,6 @@ namespace CallCenter.DAL
         public IDbSet<Incidence> Incidences { get; set; }
         public IDbSet<Equipment> Equipments { get; set; }
         public IDbSet<Message> Messages { get; set; }
-        public IDbSet<Client> Clients  { get; set; } 
-
     }
 
 }

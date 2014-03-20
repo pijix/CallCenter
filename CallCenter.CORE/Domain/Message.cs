@@ -15,11 +15,6 @@ namespace CallCenter.CORE.Domain
         public Guid UserId { get; set; }
 
         /// <summary>
-        /// Identificador cliente que responde o crea el mensaje
-        /// </summary>
-        public Client Client { get; set; }
-
-        /// <summary>
         /// Texto del mensaje
         /// </summary>
         public string Text { get; set; }

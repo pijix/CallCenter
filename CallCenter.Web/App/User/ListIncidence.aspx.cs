@@ -1,13 +1,13 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace CallCenter.Web
+namespace CallCenter.Web.App.User
 {
-    public partial class Site_Mobile : System.Web.UI.MasterPage
+    public partial class ListClient : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

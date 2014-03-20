@@ -16,9 +16,9 @@ namespace CallCenter.CORE.Domain
         public Guid UserId { get; set; }
 
         /// <summary>
-        /// Cliente al que se produce una incidencia
+        /// Título de la Incidencia
         /// </summary>
-        public Client Client {get; set; }
+        public string IncidenceTitle { get; set; }
 
         /// <summary>
         /// Equipo al que se refiere la incidencia
