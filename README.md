@@ -1,4 +1,5 @@
 CallCenter
 ==========
 
-Trabajo Final - Ingeniería Web - Copyright Jordi Pijuan Galceran
+Trabajo Final - Ingeniería Web 
+Copyright (C) 2014 Jordi Pijuan Galceran (@pijix)
