@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using CallCenter.CORE.Domain.Enums;
 
 namespace CallCenter.CORE.Domain
 {
@@ -21,6 +22,16 @@ namespace CallCenter.CORE.Domain
         public string IncidenceTitle { get; set; }
 
         /// <summary>
+        /// Fecha de creacion de la incidencia
+        /// </summary>
+        public DateTime DateCreation { get; set; }
+
+        /// <summary>
+        /// Prioridad de la incidencia
+        /// </summary>
+        public  EnumIncidencePriority Priority { get; set; }
+
+        /// <summary>
         /// Equipo al que se refiere la incidencia
         /// </summary>
         public Equipment Equipment { get; set; }
@@ -28,7 +39,7 @@ namespace CallCenter.CORE.Domain
         /// <summary>
         /// Estado en el que se encuentra la incidencia
         /// </summary>
-        public IncidenceStatus Status { get; set; }
+        public EnumIncidenceStatus Status { get; set; }
 
         /// <summary>
         /// Lista de mensajes que tiene la incidencia

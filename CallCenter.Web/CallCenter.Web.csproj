@@ -38,6 +38,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -64,9 +72,6 @@
     </Reference>
     <Reference Include="AspNet.ScriptManager.jQuery.UI.Combined">
       <HintPath>..\packages\AspNet.ScriptManager.jQuery.UI.Combined.1.8.24\lib\net40\AspNet.ScriptManager.jQuery.UI.Combined.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Providers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35">
       <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.2\lib\net40\System.Web.Providers.dll</HintPath>
@@ -120,7 +125,8 @@
     <Content Include="Admin\Security\Rols.aspx" />
     <Content Include="Admin\Security\Users.aspx" />
     <Content Include="Admin\Security\UsersByRole.aspx" />
-    <Content Include="App\User\ListIncidence.aspx" />
+    <Content Include="App\User\IncidenceList.aspx" />
+    <Content Include="App\User\IncidenceAddEdit.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -295,12 +301,19 @@
     <Compile Include="Admin\Security\UsersByRole.aspx.designer.cs">
       <DependentUpon>UsersByRole.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App\User\ListIncidence.aspx.cs">
-      <DependentUpon>ListIncidence.aspx</DependentUpon>
+    <Compile Include="App\User\IncidenceList.aspx.cs">
+      <DependentUpon>IncidenceList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="App\User\ListIncidence.aspx.designer.cs">
-      <DependentUpon>ListIncidence.aspx</DependentUpon>
+    <Compile Include="App\User\IncidenceList.aspx.designer.cs">
+      <DependentUpon>IncidenceList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\User\IncidenceAddEdit.aspx.cs">
+      <DependentUpon>IncidenceAddEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\User\IncidenceAddEdit.aspx.designer.cs">
+      <DependentUpon>IncidenceAddEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="About.aspx.cs">
@@ -379,6 +392,20 @@
   <ItemGroup>
     <Content Include="Account\Web.config" />
     <Content Include="Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CallCenter.Application\CallCenter.Application.csproj">
+      <Project>{F74E6F5F-73FA-4392-8895-E2B96E07E4CF}</Project>
+      <Name>CallCenter.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CallCenter.CORE\CallCenter.CORE.csproj">
+      <Project>{e1bd4c30-1cd4-415b-91dd-f5485d0d6d27}</Project>
+      <Name>CallCenter.CORE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CallCenter.DAL\CallCenter.DAL.csproj">
+      <Project>{56A6112A-9CE8-4645-A741-0A2B5E557293}</Project>
+      <Name>CallCenter.DAL</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

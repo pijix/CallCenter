@@ -41,7 +41,8 @@
   <ItemGroup>
     <Compile Include="Domain\Equipment.cs" />
     <Compile Include="Domain\Incidence.cs" />
-    <Compile Include="Domain\IncidenceStatus.cs" />
+    <Compile Include="Domain\Enums\EnumIncidencePriority.cs" />
+    <Compile Include="Domain\Enums\EnumIncidenceStatus.cs" />
     <Compile Include="Domain\Message.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

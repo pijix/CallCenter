@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using CallCenter.CORE.Domain;
+using CallCenter.CORE.Domain.Enums;
 using CallCenter.DAL;
 
 namespace CallCenter.Application
@@ -15,14 +17,13 @@ namespace CallCenter.Application
         }
 
 
-
         /// <summary>
         /// Método que retorna todas las incidencias
         /// </summary>
         /// <returns>Lista de incidencias</returns>
         public List<Incidence> GetAll()
         {
-            throw new NotImplementedException();
+            return _dbContext.Incidences.ToList();
         }
 
         /// <summary>
@@ -100,7 +101,7 @@ namespace CallCenter.Application
         /// Permite cambiar el estado de una incidencia
         /// </summary>
         /// <param name="status">identificador de la incidencia</param>     
-        public void ChangeStatus(IncidenceStatus status)
+        public void ChangeStatus(EnumIncidenceStatus status)
         {
             throw new NotImplementedException();
         }
