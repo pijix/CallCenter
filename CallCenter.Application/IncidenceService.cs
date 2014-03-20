@@ -73,7 +73,16 @@ namespace CallCenter.Application
         /// <returns>La incidencia añadida</returns>
         public Incidence Add(Incidence incidence)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var newClient = _dbContext.Incidences.Add(incidence);
+                _dbContext.SaveChanges();
+                return newClient;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al añadir el Cliente " + ex.InnerException.Message);
+            }
         }
 
 

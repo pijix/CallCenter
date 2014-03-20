@@ -30,6 +30,7 @@ namespace CallCenter.Web.App.User
             {
                 var newIncidence = new Incidence
                 {
+                    Id = Guid.NewGuid(),
                     DateCreation = DateTime.Today.Date,
                     IncidenceTitle = txtTitle.Text,
                     Priority = EnumIncidencePriority.Normal,
