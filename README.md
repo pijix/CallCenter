@@ -1,4 +1,4 @@
 CallCenter
 ==========
 
-Trabajo Final - Ingeniería Web by Jordi Pijuan Galceran
+Trabajo Final - Ingeniería Web - Copyright Jordi Pijuan Galceran
