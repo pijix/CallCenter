@@ -8,11 +8,23 @@
             <td style="width: 25%;">&nbsp;</td>
         </tr>
         <tr>
-            <td>&nbsp;</td>
-            <td>Surname:</td>
-            <td><asp:TextBox ID="txtSurname" runat="server"></asp:TextBox></td>
-            <td>&nbsp;</td>
-        </tr>        
+            <td style="width: 25%;">&nbsp;</td>
+            <td>Prioridad:</td>
+            <td><asp:TextBox ID="txtPriority" runat="server"></asp:TextBox></td>            
+            <td style="width: 25%;">&nbsp;</td>
+        </tr>
+        <tr>
+            <td style="width: 25%;">&nbsp;</td>
+            <td>Estado:</td>
+            <td><asp:TextBox ID="txtStatus" runat="server"></asp:TextBox></td>            
+            <td style="width: 25%;">&nbsp;</td>
+        </tr>
+        <tr>
+            <td style="width: 25%;">&nbsp;</td>
+            <td>Equipo:</td>
+            <td><asp:TextBox ID="txtEquipment" runat="server"></asp:TextBox></td>            
+            <td style="width: 25%;">&nbsp;</td>
+        </tr>
         <tr>
             <td>&nbsp;</td>
             <td colspan="2">

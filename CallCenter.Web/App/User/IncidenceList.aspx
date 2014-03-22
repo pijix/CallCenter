@@ -23,7 +23,7 @@
                 <td><asp:Literal ID="FechaCreacion" runat="server" Text='<%# Eval("DateCreation") %>'></asp:Literal></td>
                 <td><asp:Literal ID="Estado" runat="server" Text='<%# Eval("Status") %>'></asp:Literal></td>
                 <td><asp:Literal ID="Prioridad" runat="server" Text='<%# Eval("Priority") %>'></asp:Literal></td>
-                <td><asp:HyperLink ID="edit" runat="server" NavigateUrl='<%# Eval("Id","PeopleNewEdit.aspx?Id={0}") %>' Text="Editar"></asp:HyperLink></td>
+                <td><asp:HyperLink ID="edit" runat="server" NavigateUrl='<%# Eval("Id","IncidenceAddEdit.aspx?Id={0}") %>' Text="Editar"></asp:HyperLink></td>
             </tr>
         </ItemTemplate>
     </asp:ListView>

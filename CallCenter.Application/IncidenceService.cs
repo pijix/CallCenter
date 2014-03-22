@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using CallCenter.CORE.Domain;
 using CallCenter.CORE.Domain.Enums;
@@ -33,7 +35,7 @@ namespace CallCenter.Application
         /// <returns>Una incidencia</returns>
         public Incidence GetById(Guid incidenceId)
         {
-            throw new NotImplementedException();
+            return _dbContext.Incidences.FirstOrDefault(i=>i.Id == incidenceId);
         }
 
         /// <summary>
@@ -43,7 +45,7 @@ namespace CallCenter.Application
         /// <returns>Lista de incidencias</returns>
         public List<Incidence> GetByUserId(Guid userId)
         {
-            throw new NotImplementedException();
+            return _dbContext.Incidences.Select(a=>a).Where(u=>u.UserId == userId).ToList();
         }
 
         /// <summary>
@@ -53,19 +55,10 @@ namespace CallCenter.Application
         /// <returns>Lista de incidencias</returns>
         public List<Incidence> GetByEquipment(Guid equipmentId)
         {
-            throw new NotImplementedException();
+            return _dbContext.Incidences.Select(a => a).Where(e => e.Equipment.Id == equipmentId).ToList();
         }
 
-        /// <summary>
-        /// Método que retorna una lista de incidencias por cliente
-        /// </summary>
-        /// <param name="clientId">identificador del cliente</param>
-        /// <returns>Lista de incidencias</returns>
-        public List<Incidence> GetByClient(Guid clientId)
-        {
-            throw new NotImplementedException();
-        }
-
+       
         /// <summary>
         /// Permite añdir una Incidencia
         /// </summary>
@@ -81,7 +74,7 @@ namespace CallCenter.Application
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al añadir el Cliente " + ex.InnerException.Message);
+                throw new Exception("Error al añadir la Incidencia: " + ex.InnerException.Message);
             }
         }
 
@@ -93,7 +86,24 @@ namespace CallCenter.Application
         /// <returns>La incidencia editada</returns>
         public Incidence Update(Incidence incidence)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var editIncidence = _dbContext.Incidences.FirstOrDefault(i => i.Id == incidence.Id);
+                if(editIncidence == null) throw new Exception("Incidencia no encontrada");
+                editIncidence.IncidenceTitle = incidence.IncidenceTitle;
+                editIncidence.Equipment = incidence.Equipment;
+                editIncidence.Priority = incidence.Priority;
+                editIncidence.Status = incidence.Status;
+                editIncidence.UserId = incidence.UserId;
+                _dbContext.SaveChanges();
+                return editIncidence;
+            }
+
+            catch (Exception ex)
+            {              
+                throw new Exception("Error al Editar la Incidencia: " + ex.InnerException.Message);
+            }
+        
         }
 
         /// <summary>
@@ -103,16 +113,18 @@ namespace CallCenter.Application
         /// <returns>true o false por si se elimino correctamente</returns>
         public bool Delete(Guid incidenceId)
         {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// Permite cambiar el estado de una incidencia
-        /// </summary>
-        /// <param name="status">identificador de la incidencia</param>     
-        public void ChangeStatus(EnumIncidenceStatus status)
-        {
-            throw new NotImplementedException();
+            try
+            {
+                var exists = _dbContext.Incidences.FirstOrDefault(i => i.Id == incidenceId);
+                if(exists == null ) throw new Exception("La Incidencia a eliminar no Existe");
+                _dbContext.Incidences.Remove(exists);
+                _dbContext.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al Eliminar la Incidencia: " + ex.InnerException.Message);
+            }
         }
 
         /// <summary>

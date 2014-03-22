@@ -15,5 +15,6 @@
             <siteMapNode url="~/Admin/Security/AddUser.aspx" title="Añadir Usuario"/>
             <siteMapNode url="~/Admin/Security/Rols.aspx" title="Mantenimiento de roles"/>
         </siteMapNode>
-    </siteMapNode>
+      <siteMapNode url="~/App/User/EquipmentList.aspx" title="Equipamiento" roles="Usuario, Administrador"  description="" />
+      </siteMapNode>
 </siteMap>

@@ -19,12 +19,17 @@ namespace CallCenter.Web.App.User
             var incidenceService = new IncidenceService(dbcontext);
 
             //Cogemos la información del usuario actual, en userId cogeremos su id o un guid vacio si no esta logueado
-            /*var user = Membership.GetUser();
-            var userId = user == null ? Guid.Empty : (Guid)user.ProviderUserKey;*/
+            var user = Membership.GetUser();
+            Guid userId;
+            if (user != null && user.ProviderUserKey != null)
+                userId = (Guid) user.ProviderUserKey;
+            else
+                userId = Guid.Empty;
 
             // Consultamos todas las incidencias y las mostramos por pantalla ordenadas               
-            ListView1.DataSource = incidenceService.GetAll().OrderBy(i => i.Priority).ThenBy(i => i.DateCreation);
+            ListView1.DataSource = incidenceService.GetByUserId(userId).OrderBy(a=>a.Priority).ThenBy(a=>a.DateCreation);
             ListView1.DataBind();
+
         }
     }
 }

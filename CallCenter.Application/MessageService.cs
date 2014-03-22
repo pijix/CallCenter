@@ -48,16 +48,6 @@ namespace CallCenter.Application
 
 
         /// <summary>
-        /// Método que retorna todos los mensajes de un cliente
-        /// </summary>
-        /// <param name="clientId">Id de Cliente</param>
-        /// <returns>Lista de Mensajes</returns>
-        public List<Message> GetByClient(Guid clientId)
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
         /// Método para añadir un mensaje
         /// </summary>
         /// <param name="message">entidad</param>
