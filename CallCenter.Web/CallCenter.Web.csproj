@@ -126,6 +126,8 @@
     <Content Include="Admin\Security\Rols.aspx" />
     <Content Include="Admin\Security\Users.aspx" />
     <Content Include="Admin\Security\UsersByRole.aspx" />
+    <Content Include="App\User\EquipmentList.aspx" />
+    <Content Include="App\User\EquipmentAddEdit.aspx" />
     <Content Include="App\User\IncidenceList.aspx" />
     <Content Include="App\User\IncidenceAddEdit.aspx" />
     <Content Include="Contact.aspx" />
@@ -301,6 +303,20 @@
     </Compile>
     <Compile Include="Admin\Security\UsersByRole.aspx.designer.cs">
       <DependentUpon>UsersByRole.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\User\EquipmentList.aspx.cs">
+      <DependentUpon>EquipmentList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\User\EquipmentList.aspx.designer.cs">
+      <DependentUpon>EquipmentList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App\User\EquipmentAddEdit.aspx.cs">
+      <DependentUpon>EquipmentAddEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App\User\EquipmentAddEdit.aspx.designer.cs">
+      <DependentUpon>EquipmentAddEdit.aspx</DependentUpon>
     </Compile>
     <Compile Include="App\User\IncidenceList.aspx.cs">
       <DependentUpon>IncidenceList.aspx</DependentUpon>

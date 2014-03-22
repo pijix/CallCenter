@@ -10,15 +10,15 @@
 namespace CallCenter.Web.App.User {
     
     
-    public partial class IncidencetList {
+    public partial class EquipmentList {
         
         /// <summary>
-        /// ListView1 control.
+        /// ListEquipment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView ListView1;
+        protected global::System.Web.UI.WebControls.ListView ListEquipment;
     }
 }

@@ -1,22 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Security;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using CallCenter.Application;
 using CallCenter.DAL;
 
 namespace CallCenter.Web.App.User
 {
-    public partial class IncidencetList : System.Web.UI.Page
+    public partial class EquipmentList : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             // Se crea el contexto y el servicio de datos
             var dbcontext = new DBContext();
-            var incidenceService = new IncidenceService(dbcontext);
+            var equipmentService = new EquipmentService(dbcontext);
 
             //Cogemos la información del usuario actual, en userId cogeremos su id o un guid vacio si no esta logueado
             var user = Membership.GetUser();
@@ -27,8 +24,8 @@ namespace CallCenter.Web.App.User
                 userId = Guid.Empty;
 
             // Consultamos todas las incidencias y las mostramos por pantalla ordenadas               
-            ListView1.DataSource = incidenceService.GetByUserId(userId).OrderBy(a=>a.Priority).ThenBy(a=>a.DateCreation);
-            ListView1.DataBind();
+            ListEquipment.DataSource = equipmentService.GetAll().OrderBy(o=>o.Name);
+            ListEquipment.DataBind();
 
         }
     }

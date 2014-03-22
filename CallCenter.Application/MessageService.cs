@@ -5,7 +5,7 @@ using CallCenter.DAL;
 
 namespace CallCenter.Application
 {
-    internal class MessageService
+    public class MessageService
     {
 
         private DBContext _dbContext;

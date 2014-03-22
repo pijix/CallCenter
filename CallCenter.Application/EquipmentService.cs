@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using CallCenter.CORE.Domain;
 using CallCenter.DAL;
 
 namespace CallCenter.Application
 {
-    internal class EquipmentService
+    public class EquipmentService
     {
 
-        private DBContext _dbContext;
+        private readonly DBContext _dbContext;
 
         public EquipmentService(DBContext dbContext)
         {
@@ -17,23 +18,23 @@ namespace CallCenter.Application
 
 
         /// <summary>
-        /// Método que retorna todos los Equipos
+        /// Develve todos los equipos
         /// </summary>
         /// <returns>Lista de equipos</returns>
         public List<Equipment> GetAll()
         {
-            throw new NotImplementedException();
+            return _dbContext.Equipments.ToList();
         }
 
 
         /// <summary>
-        /// Método que retorna una equipo
+        /// Devuelve un único equipo
         /// </summary>
         /// <param name="equipmentId">identificador del equipo</param>
         /// <returns>Equipo</returns>
         public Equipment GetById(Guid equipmentId)
         {
-            throw new NotImplementedException();
+            return _dbContext.Equipments.FirstOrDefault(e => e.Id == equipmentId);
         }
 
 
@@ -44,7 +45,22 @@ namespace CallCenter.Application
         /// <returns>El equipo añadido</returns>
         public Equipment Add(Equipment equipment)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var newEquipment = new Equipment
+                {
+                    Id = Guid.NewGuid(),
+                    Name = equipment.Name,
+                    Description = equipment.Description
+                };
+                _dbContext.Equipments.Add(newEquipment);
+                _dbContext.SaveChanges();
+                return new Equipment();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.InnerException.Message);
+            }
         }
 
 
@@ -55,7 +71,21 @@ namespace CallCenter.Application
         /// <returns>El equipo añadido</returns>
         public Equipment Update(Equipment equipment)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var exists = _dbContext.Equipments.FirstOrDefault(e => e.Id == equipment.Id);
+                // Si no encontramos el equpio para modificar, lanzamos una excepción...
+                if (exists == null) throw new Exception("No se encontró el Equipo a Editar");
+                // Editamos
+                exists.Name = equipment.Name;
+                exists.Description = equipment.Description;
+                _dbContext.SaveChanges();
+                return new Equipment();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.InnerException.Message);
+            }
         }
 
         /// <summary>
@@ -65,7 +95,11 @@ namespace CallCenter.Application
         /// <returns>true o false por si se elimino correctamente</returns>
         public bool Delete(Guid equipmentId)
         {
-            throw new NotImplementedException();
+            var exists = _dbContext.Equipments.FirstOrDefault(e => e.Id == equipmentId);
+            if(exists == null) throw new Exception("No se encontró el Equipo a Eliminar");
+            _dbContext.Equipments.Remove(exists);
+            _dbContext.SaveChanges();
+            return true;
         }
     }
 }

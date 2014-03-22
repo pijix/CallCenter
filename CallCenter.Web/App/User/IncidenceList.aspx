@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="IncidenceList.aspx.cs" Inherits="CallCenter.Web.App.User.ListClient" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="IncidenceList.aspx.cs" Inherits="CallCenter.Web.App.User.IncidencetList" %>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
     <asp:ListView ID="ListView1" runat="server">
         <LayoutTemplate>
