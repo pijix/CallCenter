@@ -7,11 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CallCenter.Web
-{
-
-
-    public partial class _Default
-    {
+namespace CallCenter.Web {
+    
+    
+    public partial class _Default {
+        
+        /// <summary>
+        /// ListIncidence control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView ListIncidence;
     }
 }

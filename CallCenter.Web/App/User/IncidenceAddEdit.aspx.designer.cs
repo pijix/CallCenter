@@ -10,7 +10,7 @@
 namespace CallCenter.Web.App.User {
     
     
-    public partial class WebForm1 {
+    public partial class IncidenceAddEdit {
         
         /// <summary>
         /// txtTitle control.
@@ -22,31 +22,40 @@ namespace CallCenter.Web.App.User {
         protected global::System.Web.UI.WebControls.TextBox txtTitle;
         
         /// <summary>
-        /// txtPriority control.
+        /// RequiredFieldValidator1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPriority;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
         
         /// <summary>
-        /// txtStatus control.
+        /// cmbPriority control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtStatus;
+        protected global::System.Web.UI.WebControls.DropDownList cmbPriority;
         
         /// <summary>
-        /// txtEquipment control.
+        /// cmbStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEquipment;
+        protected global::System.Web.UI.WebControls.DropDownList cmbStatus;
+        
+        /// <summary>
+        /// cmbEquipment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList cmbEquipment;
         
         /// <summary>
         /// HyperLink1 control.
@@ -101,6 +110,15 @@ namespace CallCenter.Web.App.User {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Remove;
+        
+        /// <summary>
+        /// CancelActions control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button CancelActions;
         
         /// <summary>
         /// lblResult control.

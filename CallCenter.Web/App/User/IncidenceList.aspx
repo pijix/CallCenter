@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="IncidenceList.aspx.cs" Inherits="CallCenter.Web.App.User.IncidencetList" %>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:ListView ID="ListView1" runat="server">
+    <asp:LinkButton runat="server" PostBackUrl="IncidenceAddEdit.aspx">Añadir Incidencia</asp:LinkButton>
+    <asp:ListView ID="ListIncidence" runat="server">
         <LayoutTemplate>
             <table>
                 <thead>

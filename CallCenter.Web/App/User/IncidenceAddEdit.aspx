@@ -1,28 +1,40 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="IncidenceAddEdit.aspx.cs" Inherits="CallCenter.Web.App.User.WebForm1" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="IncidenceAddEdit.aspx.cs" Inherits="CallCenter.Web.App.User.IncidenceAddEdit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
         <table style="width: 100%;">
         <tr>
-            <td style="width: 25%;">&nbsp;</td>
-            <td>Título:</td>
-            <td><asp:TextBox ID="txtTitle" runat="server"></asp:TextBox></td>            
-            <td style="width: 25%;">&nbsp;</td>
+            <td style="width: 25%; height: 64px;"></td>
+            <td style="height: 64px">Título:</td>
+            <td style="height: 64px">
+                <asp:TextBox ID="txtTitle" runat="server"></asp:TextBox><br/>
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Es obligatorio informar el título" ControlToValidate="txtTitle" Display="Dynamic"></asp:RequiredFieldValidator>
+            </td>            
+            <td style="width: 25%; height: 64px;"></td>
         </tr>
         <tr>
             <td style="width: 25%;">&nbsp;</td>
             <td>Prioridad:</td>
-            <td><asp:TextBox ID="txtPriority" runat="server"></asp:TextBox></td>            
+            <td>
+                <asp:DropDownList ID="cmbPriority" runat="server">
+                </asp:DropDownList>
+            </td>            
             <td style="width: 25%;">&nbsp;</td>
         </tr>
         <tr>
             <td style="width: 25%;">&nbsp;</td>
             <td>Estado:</td>
-            <td><asp:TextBox ID="txtStatus" runat="server"></asp:TextBox></td>            
+            <td>
+                <asp:DropDownList ID="cmbStatus" runat="server">
+                </asp:DropDownList>
+            </td>            
             <td style="width: 25%;">&nbsp;</td>
         </tr>
         <tr>
             <td style="width: 25%;">&nbsp;</td>
-            <td>Equipo:</td>
-            <td><asp:TextBox ID="txtEquipment" runat="server"></asp:TextBox></td>            
+            <td>Equipo:
+            <td>
+                <asp:DropDownList ID="cmbEquipment" runat="server">
+                </asp:DropDownList>
+            </td>            
             <td style="width: 25%;">&nbsp;</td>
         </tr>
         <tr>
@@ -56,7 +68,12 @@
         <tr>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
-            <td><asp:HiddenField ID="txtId" runat="server" /><asp:Button ID="Add" runat="server" Text="Añadir" OnClick="AddIncidence" /><asp:Button ID="Update" runat="server" Text="Modificar" OnClick="UpdateIncidence" /><asp:Button ID="Remove" runat="server" Text="Eliminar" OnClick="DelteIncidence" /></td>            
+            <td><asp:HiddenField ID="txtId" runat="server" />
+                <asp:Button ID="Add" runat="server" Text="Añadir" OnClick="AddIncidence" />
+                <asp:Button ID="Update" runat="server" Text="Modificar" OnClick="UpdateIncidence" />
+                <asp:Button ID="Remove" runat="server" Text="Eliminar" OnClick="DelteIncidence" />
+                <asp:Button ID="CancelActions" runat="server" Text="Cancelar" PostBackUrl="IncidenceList.aspx"  CausesValidation="False" />
+            </td>            
             <td>&nbsp;</td>
         </tr>
         <tr>

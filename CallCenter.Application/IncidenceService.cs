@@ -126,16 +126,5 @@ namespace CallCenter.Application
                 throw new Exception("Error al Eliminar la Incidencia: " + ex.InnerException.Message);
             }
         }
-
-        /// <summary>
-        /// Retorna todos los mensajes de una incidencia
-        /// </summary>
-        /// <param name="incidenceId">identificador de la incidencia</param>     
-        /// <returns>Lista de mensajes</returns>
-        public List<Message> GetMessages(Guid incidenceId)
-        {
-            throw new NotImplementedException();
-        }
-
     }
 }
