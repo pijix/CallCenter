@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
-  <siteMapNode url="~\Default.aspx" title="Página principal"  description="" >
-    <siteMapNode url="~\About.aspx" title="Acerca de"  description="" />
+  <siteMapNode url="~\Default.aspx" title="Inicio"  description="" >
     <siteMapNode url="~/App/User/IncidenceList.aspx" title="Incidencias" roles="Usuario"  description="" />
     <siteMapNode url="~/App/User/EquipmentList.aspx" title="Equipamiento" roles="Usuario, Administrador"  description="" />
     <siteMapNode title="Seguridad" roles="Administrador">
