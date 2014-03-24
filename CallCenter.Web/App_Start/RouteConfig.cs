@@ -10,7 +10,9 @@ namespace CallCenter.Web
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
-            routes.EnableFriendlyUrls();
+            var settings = new FriendlyUrlSettings();
+            settings.AutoRedirectMode = RedirectMode.Permanent;
+            routes.EnableFriendlyUrls(settings);
         }
     }
 }
