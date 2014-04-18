@@ -39,6 +39,8 @@ namespace CallCenter.Web.App.Admin
             
             // Carga los Equipos en el combo
             LoadListsData();
+            // Carga los Usuarios en el combo
+            LoadListUsers();
             
             // Miramos si Editamos (Pasamos Id por GET) o bien Añadimos una incidencia
             var incidenceId = Request.QueryString["Id"];
@@ -58,6 +60,7 @@ namespace CallCenter.Web.App.Admin
                 cmbPriority.SelectedValue = incidence.Priority.ToString();
                 cmbStatus.SelectedValue = incidence.Status.ToString();
                 cmbEquipment.SelectedValue = incidence.Equipment != null ? incidence.Equipment.Id.ToString() : "";
+                cmdUsuario.SelectedValue = incidence.UserId.ToString();
             }
             else
             {
@@ -133,6 +136,16 @@ namespace CallCenter.Web.App.Admin
                 lblResult.Text = ex.Message;
             }
 
+        }
+
+        private void LoadListUsers()
+        {
+            var users = Membership.GetAllUsers();
+            foreach (MembershipUser user in users)
+            {
+                var li = new ListItem(user.UserName, user.ProviderUserKey.ToString());
+                cmdUsuario.Items.Add(li);
+            }
         }
 
         private void LoadListsData()

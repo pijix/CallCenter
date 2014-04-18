@@ -10,6 +10,15 @@
             </td>            
             <td style="width: 25%; height: 64px;"></td>
         </tr>
+          <tr>
+            <td style="width: 25%;">&nbsp;</td>
+            <td>Usuario:</td>
+            <td>
+                <asp:DropDownList ID="cmdUsuario" runat="server">
+                </asp:DropDownList>
+            </td>            
+            <td style="width: 25%;">&nbsp;</td>
+        </tr>
         <tr>
             <td style="width: 25%;">&nbsp;</td>
             <td>Prioridad:</td>

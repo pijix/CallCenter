@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
   <siteMapNode url="~\Default.aspx" title="Inicio"  description="" >
-    <siteMapNode url="~/App/User/IncidenceList.aspx" title="Incidencias" description="" />
-    <siteMapNode url="~/App/User/EquipmentList.aspx" title="Equipamiento" description="" />
+    <siteMapNode url="~/App/User/IncidenceList.aspx" title="Incidencias" description="" roles="Usuario" />
+    <siteMapNode url="~/App/Admin/IncidenceList.aspx" title="Incidencias" description="" roles="Administrador" />
+    <siteMapNode url="~/App/Shared/EquipmentList.aspx" title="Equipamiento" description="" />
     <siteMapNode title="Seguridad" roles="Administrador">
       <siteMapNode url="~/Admin/Security/AccessRules.aspx" title="Reglas de acceso"/>
       <siteMapNode url="~/Admin/Security/AccessRuleSummary.aspx" title="Resumen de acceso de seguridad"/>

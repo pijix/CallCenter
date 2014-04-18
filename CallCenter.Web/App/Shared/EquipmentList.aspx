@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="EquipmentList.aspx.cs" Inherits="CallCenter.Web.App.Shared.EquipmentList" %>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:LinkButton runat="server" PostBackUrl="~/App/User/EquipmentAddEdit.aspx">Añadir Equipo</asp:LinkButton>
+    <asp:LinkButton runat="server" PostBackUrl="~/App/Shared/EquipmentAddEdit.aspx">Añadir Equipo</asp:LinkButton>
     <asp:ListView ID="ListEquipment" runat="server">
         <LayoutTemplate>
             <table>

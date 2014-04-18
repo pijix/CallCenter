@@ -22,7 +22,7 @@
                 <asp:Button ID="Add" runat="server" Text="Añadir" OnClick="AddEquipment" />
                 <asp:Button ID="Update" runat="server" Text="Modificar" OnClick="UpdateEquipment" />
                 <asp:Button ID="Remove" runat="server" Text="Eliminar" OnClick="DeleteEquipment" />
-                <asp:Button ID="Cancel" runat="server" Text="Cancelar" CausesValidation="False" PostBackUrl="~/App/User/EquipmentList.aspx" />
+                <asp:Button ID="Cancel" runat="server" Text="Cancelar" CausesValidation="False" PostBackUrl="~/App/Shared/EquipmentList.aspx" />
             </td>            
             <td>&nbsp;</td>
         </tr>
