@@ -67,31 +67,40 @@ namespace CallCenter.Web.App.Admin {
         protected global::System.Web.UI.WebControls.DropDownList cmbEquipment;
         
         /// <summary>
-        /// HyperLink1 control.
+        /// txtMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
+        protected global::System.Web.UI.WebControls.TextBox txtMessage;
         
         /// <summary>
-        /// ListView1 control.
+        /// AddMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListView ListView1;
+        protected global::System.Web.UI.WebControls.Button AddMessage;
         
         /// <summary>
-        /// txtId control.
+        /// ListMessages control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField txtId;
+        protected global::System.Web.UI.WebControls.ListView ListMessages;
+        
+        /// <summary>
+        /// guidIncidence control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField guidIncidence;
         
         /// <summary>
         /// Add control.
