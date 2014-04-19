@@ -11,68 +11,56 @@
 </head>
 <body>
     <form runat="server">
-    
+
         <div class="container">
-            <div class="col-xs-12">
-                 <asp:Menu ID="MainMenu" runat="server" CssClass="nav nav-pills" DataSourceID="SiteMapDataSource1" StaticDisplayLevels="2" OnMenuItemDataBound="MainMenu_MenuItemDataBound" >
-                    <StaticMenuStyle CssClass="nav navbar-nav" />
-                    <StaticSelectedStyle BackColor="#1a242f"/>
-                    <StaticItemTemplate>
-                        <%# Eval("Text") %>
-                    </StaticItemTemplate>
-                 </asp:Menu>
-                <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />      
+            <div class="row">
+                <div class="col-xs-2">
+                    <h3>CallCenter</h3>
+                </div>
+                <div class="col-xs-8" style="margin-top: 15px; margin-bottom: 30px;">
+                     <asp:Menu ID="MainMenu" runat="server" DataSourceID="SiteMapDataSource1" StaticDisplayLevels="2" OnMenuItemDataBound="MainMenu_MenuItemDataBound" >
+                        <StaticMenuStyle CssClass="nav nav-pills" />
+                        <StaticSelectedStyle BackColor="#2c3e50" ForeColor="#ffffff"/>
+                        <StaticItemTemplate>
+                            <%# Eval("Text") %>
+                        </StaticItemTemplate>
+                     </asp:Menu>
+                    <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />      
+                </div>
+                <div class="col-xs-2 right">
+                    <asp:LoginView runat="server" ViewStateMode="Disabled">
+                            <AnonymousTemplate>
+                                    <li><a id="registerLink" runat="server" href="~/Account/Register">Register</a></li>
+                                    <li><a id="loginLink" runat="server" href="~/Account/Login">Log in</a></li>
+                            </AnonymousTemplate>
+                            <LoggedInTemplate>
+                                <p>
+                                    Hello, <a runat="server" class="username" href="~/Account/Manage" title="Manage your account">
+                                        <asp:LoginName runat="server" CssClass="username" />
+                                    </a>!
+                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" />
+                                </p>
+                            </LoggedInTemplate>
+                        </asp:LoginView>
+                </div>
             </div>
-            <div class="col-xs-12">
-                LINIES
+            <div class="row">
+                <div class="col-xs-12">
+                     <div id="body">
+                        <section class="content-wrapper main-content clear-fix">
+                            <asp:ContentPlaceHolder runat="server" ID="MainContent" />
+                        </section>
+                    </div>
+                </div>
             </div>
-            <div class="col-xs-12">
-                footer
-            </div>
-        </div>
-      
-      
-          
-            <ul class="nav navbar-nav navbar-right">
-                <asp:LoginView runat="server" ViewStateMode="Disabled">
-                        <AnonymousTemplate>
-                                <li><a id="registerLink" runat="server" href="~/Account/Register">Register</a></li>
-                                <li><a id="loginLink" runat="server" href="~/Account/Login">Log in</a></li>
-                        </AnonymousTemplate>
-                        <LoggedInTemplate>
-                            <p>
-                                Hello, <a runat="server" class="username" href="~/Account/Manage" title="Manage your account">
-                                    <asp:LoginName runat="server" CssClass="username" />
-                                </a>!
-                                <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" />
-                            </p>
-                        </LoggedInTemplate>
-                    </asp:LoginView>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div><!--/.container-fluid -->
-      </div>
-
-      <!-- Main component for a primary marketing message or call to action -->
-        <div id="body">
-            <section class="content-wrapper main-content clear-fix">
-                <asp:ContentPlaceHolder runat="server" ID="MainContent" />
-            </section>
-        </div>
-              
-        <div class="content-wrapper">
-            <div class="float-left">
-                <p>&copy; <%: DateTime.Now.Year %> - Call Center - Jordi Pijuan Galceran | SEAS - Ingenieria Web</p>
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <h6>&copy; <%: DateTime.Now.Year %> - Call Center - Jordi Pijuan Galceran | SEAS - Ingenieria Web</h6>
+                </div>
             </div>
         </div>
-
-    </div> <!-- /container -->
-
     </form>
-    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="~/Content/bootstrap/js/bootstrap.min.js"></script>
-    
-
 </body>
 </html>
