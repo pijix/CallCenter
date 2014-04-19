@@ -4,7 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
-using System.Web.UI.WebControls;
+using System.Windows.Forms;
+using MenuItem = System.Web.UI.WebControls.MenuItem;
 
 namespace CallCenter.Web
 {
@@ -65,9 +66,20 @@ namespace CallCenter.Web
             }
         }
 
-        protected void Page_Load(object sender, EventArgs e)
+        protected void MainMenu_MenuItemDataBound(object sender, System.Web.UI.WebControls.MenuEventArgs e)
         {
-
+            var pageViewed = Page.AppRelativeVirtualPath;
+            // Activamos el elemento del menú seleccionado para darle estilo
+            foreach (MenuItem item in MainMenu.Items)
+            {
+                if (pageViewed == "~" + item.NavigateUrl)
+                    item.Selected = true;
+                foreach (MenuItem childItem in item.ChildItems)
+                {
+                    if (pageViewed == "~" + childItem.NavigateUrl)
+                        childItem.Selected = true;
+                }
+            }
         }
     }
 }
