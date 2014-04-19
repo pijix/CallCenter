@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Web.Security;
 
 namespace CallCenter.CORE.Domain
 {
@@ -15,6 +16,16 @@ namespace CallCenter.CORE.Domain
         public Guid UserId { get; set; }
 
         /// <summary>
+        /// Nombre del usuario que redacta el mensaje
+        /// </summary>
+        public string UserName { get; set; }
+
+        /// <summary>
+        /// Incidencia relacionada con el mensaje
+        /// </summary>
+        public Guid IncidenceId { get; set; }
+
+        /// <summary>
         /// Texto del mensaje
         /// </summary>
         public string Text { get; set; }
@@ -23,5 +34,6 @@ namespace CallCenter.CORE.Domain
         /// Fecha de creación del mensaje
         /// </summary>
         public DateTime CreatedDate { get; set; }
+
     }
 }

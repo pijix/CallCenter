@@ -40,35 +40,30 @@
         <tr>
             <td>&nbsp;</td>
             <td colspan="2">
-                <asp:HyperLink Visible="false" ID="HyperLink1" runat="server" NavigateUrl="TelephoneNewEdit.aspx" Text="Nuevo número" />
-                <asp:ListView ID="ListView1" runat="server">
-                    <LayoutTemplate>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Número</th>
-                                    <th>&nbsp;</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <asp:PlaceHolder ID="ItemPlaceHolder" runat="server"></asp:PlaceHolder>
-                            </tbody>
-                        </table>
-                    </LayoutTemplate>
-                    <ItemTemplate>
-                        <tr>
-                            <td><asp:Literal ID="Number" runat="server" Text='<%# Eval("Phone") %>'></asp:Literal></td>
-                            <td><asp:HyperLink ID="edit" runat="server" NavigateUrl='<%# Eval("Id","TelephoneNewEdit.aspx?Id={0}") %>' Text="Editar"></asp:HyperLink></td>
-                        </tr>
-                    </ItemTemplate>
-                </asp:ListView>                
+                <asp:TextBox runat="server" ID="txtMessage"></asp:TextBox>
+                <asp:Button ID="AddMessage" runat="server" Text="Añadir" OnClick="AddNewMessage" />
+                <asp:ListView ID="ListMessages" runat="server">
+        <LayoutTemplate>
+            <table>
+                <asp:PlaceHolder ID="ItemPlaceHolder" runat="server"></asp:PlaceHolder>
+            </table>
+        </LayoutTemplate>
+        <ItemTemplate>
+            <tr>
+                <td><asp:Literal ID="User" runat="server" Text='<%# Eval("UserName") %>'></asp:Literal></td>
+                <td><asp:Literal ID="MessageDate" runat="server" Text='<%# Eval("CreatedDate") %>'></asp:Literal></td>
+                <td><asp:Literal ID="MessageText" runat="server" Text='<%# Eval("Text") %>'></asp:Literal></td>
+            </tr>
+        </ItemTemplate>
+    </asp:ListView>
+
             </td>            
             <td>&nbsp;</td>
         </tr>
         <tr>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
-            <td><asp:HiddenField ID="txtId" runat="server" />
+            <td><asp:HiddenField ID="guidIncidence" runat="server" />
                 <asp:Button ID="Add" runat="server" Text="Añadir" OnClick="AddIncidence" />
                 <asp:Button ID="Update" runat="server" Text="Modificar" OnClick="UpdateIncidence" />
                 <asp:Button ID="Remove" runat="server" Text="Eliminar" OnClick="DelteIncidence" />

@@ -1,9 +1,8 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
 using CallCenter.Application;
 using CallCenter.CORE.Domain;
 using CallCenter.CORE.Domain.Enums;
@@ -17,6 +16,7 @@ namespace CallCenter.Web.App.User
         private DBContext _dbContext;
         private IncidenceService _service;
         private EquipmentService _equipmentService;
+        private MessageService _messageService;
         private Guid _userId;
         
         protected void Page_Load(object sender, EventArgs e)
@@ -24,7 +24,8 @@ namespace CallCenter.Web.App.User
             _dbContext = new DBContext();
             _service = new IncidenceService(_dbContext);
             _equipmentService = new EquipmentService(_dbContext);
-
+            _messageService = new MessageService(_dbContext);
+            
             // Recuperamos el id de Usuario
             //Cogemos la información del usuario actual, en userId cogeremos su id o un guid vacio si no esta logueado
             var user = Membership.GetUser();
@@ -49,7 +50,7 @@ namespace CallCenter.Web.App.User
 
             if (string.IsNullOrWhiteSpace(incidenceId)) return;
             
-            // EDITAMOS
+            // EDITAMOS                     
             var incidence = _service.GetById(new Guid(incidenceId));
             if (incidence != null)
             {
@@ -57,11 +58,14 @@ namespace CallCenter.Web.App.User
                 Update.Visible = true;   
 
                 // Llenamos los campos con la info de la Incidencia
-                txtId.Value = incidenceId;
+                guidIncidence.Value = incidenceId;
                 txtTitle.Text = incidence.IncidenceTitle;
                 cmbPriority.SelectedValue = incidence.Priority.ToString();
                 cmbStatus.SelectedValue = incidence.Status.ToString();
                 cmbEquipment.SelectedValue = incidence.Equipment != null ? incidence.Equipment.Id.ToString() : "";
+                
+                // Muestra los mensajes de la Incidencia
+                LoadMessageList();
             }
             else
             {
@@ -104,7 +108,7 @@ namespace CallCenter.Web.App.User
             try
             {
 
-                var exists = _service.GetById(new Guid(txtId.Value));
+                var exists = _service.GetById(new Guid(guidIncidence.Value));
                 if(exists == null) throw new Exception("Incidencia no encontrada, no puede editarse");
                 exists.IncidenceTitle = txtTitle.Text;
                 exists.Priority = (EnumIncidencePriority) Enum.Parse(typeof (EnumIncidencePriority), cmbPriority.SelectedItem.Text);
@@ -127,7 +131,7 @@ namespace CallCenter.Web.App.User
         {
             try
             {
-                if(_service.Delete(new Guid(txtId.ToString())))
+                if (_service.Delete(new Guid(guidIncidence.ToString())))
                     throw new Exception("No ha sido posible borrar la Incidencia");
                 
                 _dbContext.SaveChanges();
@@ -163,5 +167,49 @@ namespace CallCenter.Web.App.User
             cmbStatus.Items.Add(EnumIncidenceStatus.Cerrada.ToString());
         }
 
+        private void LoadMessageList()
+        {
+            try
+            {
+                var messagesList = _messageService.GetByIncidence(new Guid(guidIncidence.Value)).OrderByDescending(a=>a.CreatedDate).ToList();         
+                ListMessages.DataSource = messagesList;
+                ListMessages.DataBind();
+            }
+            catch (Exception ex)
+            {
+                lblResult.Text = ex.Message;
+            }
+            
+        }
+
+        protected void AddNewMessage(object sender, EventArgs e)
+        {
+            var currentUser = Membership.GetUser();
+
+            if (string.IsNullOrWhiteSpace(txtMessage.Text) || string.IsNullOrWhiteSpace(guidIncidence.Value) 
+                || currentUser == null || currentUser.ProviderUserKey == null) return;
+
+            try
+            {
+                var newMessage = new Message
+                {
+                    Id = Guid.NewGuid(),
+                    CreatedDate = DateTime.Now,
+                    Text = txtMessage.Text,
+                    IncidenceId = new Guid(guidIncidence.Value),
+                    UserId = new Guid(currentUser.ProviderUserKey.ToString()),
+                    UserName = currentUser.UserName
+                };
+                
+                _messageService.Add(newMessage);
+                LoadMessageList();
+            }
+
+            catch (Exception ex)
+            {
+                lblResult.Text = ex.Message;
+            }
+           
+        }
     }
 }

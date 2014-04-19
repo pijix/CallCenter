@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 using CallCenter.CORE.Domain;
 using CallCenter.DAL;
 
@@ -39,11 +41,11 @@ namespace CallCenter.Application
         /// <summary>
         /// Método que retorna todos los mensajes de un usuario
         /// </summary>
-        /// <param name="userId">Id de Usuario</param>
+        /// <param name="incidenceId">Id de Usuario</param>
         /// <returns>Lista de Mensajes</returns>
-        public List<Message> GetByUser(Guid userId)
+        public IQueryable<Message> GetByIncidence(Guid incidenceId)
         {
-            throw new NotImplementedException();
+            return _dbContext.Messages.Where(a=>a.IncidenceId == incidenceId);
         }
 
 
@@ -54,7 +56,16 @@ namespace CallCenter.Application
         /// <returns>Deveuelve el mensage añadido</returns>
         public Message Add(Message message)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var newMessage = _dbContext.Messages.Add(message);
+                _dbContext.SaveChanges();
+                return newMessage;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al añadir el Mensaje: " + ex.InnerException.Message);
+            }
         }
 
         /// <summary>
