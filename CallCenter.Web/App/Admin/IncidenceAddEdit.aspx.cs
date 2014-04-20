@@ -37,11 +37,14 @@ namespace CallCenter.Web.App.Admin
             // Si es PostBack no hacemos nada, solo quando carga la página
             if (Page.IsPostBack) return;
 
-            // Activamos los botones, por defecto estado Add
+            // Activamos los controles, por defecto estado Add
             Add.Visible = true;
             Update.Visible = false;
-            Remove.Visible = true;
-
+            Remove.Visible = false;
+            lblResult.Visible = false;
+            txtMessage.Visible = false;
+            AddMessage.Visible = false;
+            lblMessage.Visible = false;
             // Carga los Equipos en el combo
             LoadListsData();
             // Carga los Usuarios en el combo
@@ -56,8 +59,13 @@ namespace CallCenter.Web.App.Admin
             var incidence = _service.GetById(new Guid(incidenceId));
             if (incidence != null)
             {
+                // Activamos controles en modo edicion
                 Add.Visible = false;
                 Update.Visible = true;
+                Remove.Visible = true;
+                txtMessage.Visible = true;
+                AddMessage.Visible = true;
+                lblMessage.Visible = true;
 
                 // Llenamos los campos con la info de la Incidencia
                 guidIncidence.Value = incidenceId;
@@ -72,6 +80,7 @@ namespace CallCenter.Web.App.Admin
             else
             {
                 lblResult.Text = "Incidencia no encontrada para editar";
+                lblResult.Visible = true;
             }
         }
 
@@ -102,6 +111,7 @@ namespace CallCenter.Web.App.Admin
             catch (Exception ex)
             {
                 lblResult.Text = ex.Message;
+                lblResult.Visible = true;
             }
         }
 
@@ -127,6 +137,7 @@ namespace CallCenter.Web.App.Admin
             catch (Exception ex)
             {
                 lblResult.Text = ex.Message;
+                lblResult.Visible = true;
             }
         }
 
@@ -143,6 +154,7 @@ namespace CallCenter.Web.App.Admin
             catch (Exception ex)
             {
                 lblResult.Text = ex.Message;
+                lblResult.Visible = true;
             }
 
         }
@@ -190,6 +202,7 @@ namespace CallCenter.Web.App.Admin
             catch (Exception ex)
             {
                 lblResult.Text = ex.Message;
+                lblResult.Visible = true;
             }
 
         }
@@ -220,6 +233,7 @@ namespace CallCenter.Web.App.Admin
             catch (Exception ex)
             {
                 lblResult.Text = ex.Message;
+                lblResult.Visible = true;
             }
 
         }

@@ -41,7 +41,11 @@ namespace CallCenter.Web.App.User
             Add.Visible = true;
             Update.Visible = false;
             Remove.Visible = true;
-            
+            lblResult.Visible = false;
+            txtMessage.Visible = false;
+            AddMessage.Visible = false;
+            lblMessage.Visible = false;
+
             // Carga los Equipos en el combo
             LoadListsData();
             
@@ -55,7 +59,10 @@ namespace CallCenter.Web.App.User
             if (incidence != null)
             {
                 Add.Visible = false;
-                Update.Visible = true;   
+                Update.Visible = true;
+                txtMessage.Visible = true;
+                AddMessage.Visible = true;
+                lblMessage.Visible = true;
 
                 // Llenamos los campos con la info de la Incidencia
                 guidIncidence.Value = incidenceId;
@@ -70,6 +77,7 @@ namespace CallCenter.Web.App.User
             else
             {
                 lblResult.Text = "Incidencia no encontrada para editar";
+                lblResult.Visible = true;
             }
         }
 
@@ -100,6 +108,8 @@ namespace CallCenter.Web.App.User
             catch (Exception ex)
             {
                 lblResult.Text = ex.Message;
+                lblResult.Visible = true;
+
             }            
         }
 
@@ -124,6 +134,8 @@ namespace CallCenter.Web.App.User
             catch (Exception ex)
             {
                 lblResult.Text = ex.Message;
+                lblResult.Visible = true;
+
             }
         }
 
@@ -140,6 +152,8 @@ namespace CallCenter.Web.App.User
             catch (Exception ex)
             {
                 lblResult.Text = ex.Message;
+                lblResult.Visible = true;
+
             }
 
         }
@@ -177,7 +191,9 @@ namespace CallCenter.Web.App.User
             }
             catch (Exception ex)
             {
-                lblResult.Text = ex.Message;
+                lblResult.Text = ex.Message; 
+                lblResult.Visible = true;
+
             }
             
         }
@@ -208,6 +224,8 @@ namespace CallCenter.Web.App.User
             catch (Exception ex)
             {
                 lblResult.Text = ex.Message;
+                lblResult.Visible = true;
+
             }
            
         }

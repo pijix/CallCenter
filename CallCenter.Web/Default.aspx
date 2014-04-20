@@ -18,7 +18,7 @@
         </LayoutTemplate>
         <ItemTemplate>
             <tr> 
-                <td><asp:Literal ID="FechaCreacion" runat="server" Text='<%# Eval("DateCreation", "{0:dd/MM/yyyy}") %>'></asp:Literal></td>
+                <td><asp:Literal ID="FechaCreacion" runat="server" Text='<%# Eval("DateCreation") %>'></asp:Literal></td>
                  <td><asp:Literal ID="Titulo" runat="server" Text='<%# Eval("IncidenceTitle") %>'></asp:Literal></td>
                 <td><asp:Literal ID="Estado" runat="server" Text='<%# Eval("Status") %>'></asp:Literal></td>
             </tr>

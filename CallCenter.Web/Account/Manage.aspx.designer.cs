@@ -7,13 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CallCenter.Web.Account
-{
-
-
-    public partial class Manage
-    {
-
+namespace CallCenter.Web.Account {
+    
+    
+    public partial class Manage {
+        
         /// <summary>
         /// successMessage control.
         /// </summary>
@@ -22,7 +20,7 @@ namespace CallCenter.Web.Account
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder successMessage;
-
+        
         /// <summary>
         /// setPassword control.
         /// </summary>
@@ -31,7 +29,7 @@ namespace CallCenter.Web.Account
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder setPassword;
-
+        
         /// <summary>
         /// password control.
         /// </summary>
@@ -40,8 +38,7 @@ namespace CallCenter.Web.Account
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox password;
-
-
+        
         /// <summary>
         /// newPasswordMessage control.
         /// </summary>
@@ -50,8 +47,7 @@ namespace CallCenter.Web.Account
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label newPasswordMessage;
-
-
+        
         /// <summary>
         /// confirmPassword control.
         /// </summary>
@@ -60,7 +56,7 @@ namespace CallCenter.Web.Account
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox confirmPassword;
-
+        
         /// <summary>
         /// changePassword control.
         /// </summary>
@@ -69,8 +65,7 @@ namespace CallCenter.Web.Account
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder changePassword;
-
-
+        
         /// <summary>
         /// externalLoginsList control.
         /// </summary>
@@ -79,6 +74,5 @@ namespace CallCenter.Web.Account
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListView externalLoginsList;
-
     }
 }
