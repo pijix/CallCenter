@@ -1,46 +1,35 @@
 ﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="CallCenter.Web.Default" %>
 
 <asp:Content runat="server" ID="BodyContent" ContentPlaceHolderID="MainContent">
-   
-    <!-- Control Avisos por Usuario i Equipo -->
+ 
+    <!-- Lista de Incidencias -->
     <div class="row">
-        <div class="col-lg-6">
-        <p class="label label-danger">Usuarios con Incidencias Acumuladas</p>
-                        <asp:ListView ID="UserTotalIncidences" runat="server">
-                <LayoutTemplate>
-                   <ul class="list-group">
-                            <asp:PlaceHolder ID="ItemPlaceHolder" runat="server"></asp:PlaceHolder>
-                   </ul>
-                </LayoutTemplate>
-                <ItemTemplate>
-                     <li class="list-group-item">
-                         <span class="badge"><asp:Literal ID="TotalUserIncidence" runat="server" Text='<%# Eval("IncidencesCount") %>'/></span>
-                         <asp:Literal ID="IncidenceUserName" runat="server" Text='<%# Eval("UserName") %>'/>
-                    </li>
-                </ItemTemplate>
-            </asp:ListView>
-        </div>
-        <div class="col-lg-6">
-        <p class="label label-danger">Equipos con Incidencias Acumuladas</p>
-            <asp:ListView ID="EquipmentTotalIncidences" runat="server">
-                <LayoutTemplate>
-                   <ul class="list-group">
-                            <asp:PlaceHolder ID="ItemPlaceHolder" runat="server"></asp:PlaceHolder>
-                   </ul>
-                </LayoutTemplate>
-                <ItemTemplate>
-                     <li class="list-group-item">
-                         <span class="badge"><asp:Literal ID="TotalUserIncidence" runat="server" Text='<%# Eval("IncidencesCount") %>'/></span>
-                         <asp:Literal ID="IncidenceUserName" runat="server" Text='<%# Eval("EquipmentName") %>'/>
-                    </li>
-                </ItemTemplate>
-            </asp:ListView>
+        <div class="col-lg-12">
+            <h3 class="text-info">Listado Incidencias</h3>
         </div>
     </div>
-     
+    <div class="row">
+        <div class="col-lg-3">
+            <!-- caja de texto busqueda -->
+            <div class="form-group">
+              <div class="input-group">
+                  <asp:TextBox runat="server" CssClass="form-control" ID="txtBuscar"></asp:TextBox>
+                <span class="input-group-btn">
+                    <asp:Button runat="server" CssClass="btn btn-default" ID="btnBuscar" Text="Buscar" OnClick="SearchIncidences"/>
+                </span>
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-lg-offset-5 pull-right">
+              <div class="btn-group pull-right">
+                  <asp:Button runat="server" CssClass="btn btn-info btn-sm" Text="Activas" ID="btnFilterIncidences" OnClick="LoadAllIncidences"/>
+                  <asp:Button runat="server" CssClass="btn btn-info btn-sm" Text="Todas" ID="btnAllIncidences" OnClick="LoadFilterIncidences"/>
+              </div>        
+        </div>
+    </div>
     
-    <!-- Lista de Incidencias -->
-        <h4 class="alert alert-info">Listado Incidencias</h4>
+    <div class="row">
+        <div class="col-lg-12">
         <asp:ListView ID="ListIncidence" runat="server">
         <LayoutTemplate>
             <table class="table table-striped table-hover">
@@ -67,4 +56,6 @@
             </tr>
         </ItemTemplate>
     </asp:ListView>
+            </div>
+    </div>
     </asp:Content>

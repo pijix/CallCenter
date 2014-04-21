@@ -1,5 +1,43 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="IncidenceList.aspx.cs" Inherits="CallCenter.Web.App.Admin.IncidencetList" %>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
+    <!-- Control Avisos por Usuario i Equipo -->
+    <div class="row">
+        
+        <div class="col-lg-6">
+        <p class="label label-danger">Usuarios con Incidencias Acumuladas</p>
+                        <asp:ListView ID="UserTotalIncidences" runat="server">
+                <LayoutTemplate>
+                   <ul class="list-group">
+                            <asp:PlaceHolder ID="ItemPlaceHolder" runat="server"></asp:PlaceHolder>
+                   </ul>
+                </LayoutTemplate>
+                <ItemTemplate>
+                     <li class="list-group-item">
+                         <span class="badge"><asp:Literal ID="TotalUserIncidence" runat="server" Text='<%# Eval("IncidencesCount") %>'/></span>
+                         <asp:Literal ID="IncidenceUserName" runat="server" Text='<%# Eval("UserName") %>'/>
+                    </li>
+                </ItemTemplate>
+            </asp:ListView>
+        </div>
+
+        <div class="col-lg-6">
+        <p class="label label-danger">Equipos con Incidencias Acumuladas</p>
+            <asp:ListView ID="EquipmentTotalIncidences" runat="server">
+                <LayoutTemplate>
+                   <ul class="list-group">
+                            <asp:PlaceHolder ID="ItemPlaceHolder" runat="server"></asp:PlaceHolder>
+                   </ul>
+                </LayoutTemplate>
+                <ItemTemplate>
+                     <li class="list-group-item">
+                         <span class="badge"><asp:Literal ID="TotalUserIncidence" runat="server" Text='<%# Eval("IncidencesCount") %>'/></span>
+                         <asp:Literal ID="IncidenceUserName" runat="server" Text='<%# Eval("EquipmentName") %>'/>
+                    </li>
+                </ItemTemplate>
+            </asp:ListView>
+        </div>
+</div>
+    
     <asp:Button runat="server" PostBackUrl="IncidenceAddEdit.aspx" Text="Añadir Incidencia" CssClass="btn btn-info"></asp:Button>
     <asp:ListView ID="ListIncidence" runat="server">
         <LayoutTemplate>

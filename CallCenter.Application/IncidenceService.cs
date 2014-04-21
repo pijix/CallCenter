@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using CallCenter.CORE.Domain;
+using CallCenter.CORE.Domain.Enums;
 using CallCenter.DAL;
 
 namespace CallCenter.Application
@@ -22,7 +24,7 @@ namespace CallCenter.Application
         /// <returns>Lista de incidencias</returns>
         public List<Incidence> GetAll()
         {
-            return _dbContext.Incidences.ToList();
+            return _dbContext.Incidences.Include(a=>a.Equipment).ToList();
         }
 
         /// <summary>
@@ -133,7 +135,7 @@ namespace CallCenter.Application
         {
             try
             {
-                return _dbContext.Incidences.GroupBy(a => a.UserId).Where(a => a.Count()>2).Select(a => new {UserName = a.FirstOrDefault().UserName, IncidencesCount = a.Count()}).ToList();
+                return _dbContext.Incidences.Where(a=>a.Status != EnumIncidenceStatus.Cerrada).GroupBy(a => a.UserId).Where(a => a.Count()>2).Select(a => new { a.FirstOrDefault().UserName, IncidencesCount = a.Count()}).ToList();
             }
             catch (Exception ex)
             {
@@ -149,7 +151,7 @@ namespace CallCenter.Application
         {
             try
             {
-                return _dbContext.Incidences.GroupBy(a=>a.Equipment.Id).Where(a => a.Count()>2).Select(a => new { EquipmentName = a.FirstOrDefault().Equipment.Name, IncidencesCount = a.Count() }).ToList();
+                return _dbContext.Incidences.Where(a=>a.Status != EnumIncidenceStatus.Cerrada).GroupBy(a=>a.Equipment.Id).Where(a => a.Count()>2).Select(a => new { EquipmentName = a.FirstOrDefault().Equipment.Name, IncidencesCount = a.Count() }).ToList();
             }
             catch (Exception ex)
             {

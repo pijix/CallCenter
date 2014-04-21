@@ -22,9 +22,11 @@ namespace CallCenter.Web.App.User
             else
                 userId = Guid.Empty;
 
+
             // Consultamos todas las incidencias y las mostramos por pantalla ordenadas               
             ListIncidence.DataSource = incidenceService.GetByUserId(userId).OrderBy(a=>a.Priority).ThenBy(a=>a.DateCreation);
             ListIncidence.DataBind();
+
 
         }
     }
