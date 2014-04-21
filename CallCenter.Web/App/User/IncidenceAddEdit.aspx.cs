@@ -90,16 +90,17 @@ namespace CallCenter.Web.App.User
                 {
                     Id = Guid.NewGuid(),
                     UserId = _userId,
-                    DateCreation = DateTime.Today.Date,
+                    DateCreation = DateTime.Now,
                     IncidenceTitle = txtTitle.Text,
                     Priority = (EnumIncidencePriority)Enum.Parse(typeof(EnumIncidencePriority), cmbPriority.SelectedItem.Text),
-                    Status = (EnumIncidenceStatus)Enum.Parse(typeof(EnumIncidenceStatus), cmbStatus.SelectedItem.Text)
+                    Status = (EnumIncidenceStatus)Enum.Parse(typeof(EnumIncidenceStatus), cmbStatus.SelectedItem.Text),
+                    UserName = User.Identity.Name
                 };
-                
 
+
+                if (string.IsNullOrWhiteSpace(cmbEquipment.SelectedValue)) throw new Exception("El equipo seleccionado no es válido!");
                 var equipment = _equipmentService.GetById(new Guid(cmbEquipment.SelectedValue));
-                if (equipment != null)
-                    newIncidence.Equipment = equipment;
+                newIncidence.Equipment = equipment;
                 
                 _service.Add(newIncidence);
                 _dbContext.SaveChanges();
@@ -123,7 +124,8 @@ namespace CallCenter.Web.App.User
                 exists.IncidenceTitle = txtTitle.Text;
                 exists.Priority = (EnumIncidencePriority) Enum.Parse(typeof (EnumIncidencePriority), cmbPriority.SelectedItem.Text);
                 exists.Status = (EnumIncidenceStatus) Enum.Parse(typeof (EnumIncidenceStatus), cmbStatus.SelectedItem.Text);
-                
+                exists.UserName = User.Identity.Name;
+
                 var equipment = _equipmentService.GetById(new Guid(cmbEquipment.SelectedValue));
                 if (equipment != null)
                     exists.Equipment = equipment;

@@ -13,25 +13,25 @@
       <label  class="col-lg-2 control-label">Título</label>
       <div class="col-lg-10">
          <asp:TextBox ID="txtTitle" runat="server" CssClass="form-control"></asp:TextBox><br/>
-         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Es obligatorio informar el título" ControlToValidate="txtTitle" Display="Dynamic"></asp:RequiredFieldValidator>
+         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ErrorMessage="Es obligatorio informar el título" CssClass="text-danger" ControlToValidate="txtTitle" Display="Dynamic"></asp:RequiredFieldValidator>
       </div>
     </div>
     <div class="form-group">
-      <label class="col-lg-2 control-label">Textarea</label>
+      <label class="col-lg-2 control-label">Prioridad</label>
       <div class="col-lg-10">
            <asp:DropDownList ID="cmbPriority" runat="server" CssClass="form-control">
            </asp:DropDownList>
       </div>
     </div>
     <div class="form-group">
-      <label class="col-lg-2 control-label">Radios</label>
+      <label class="col-lg-2 control-label">Estado</label>
       <div class="col-lg-10">
         <asp:DropDownList ID="cmbStatus" runat="server" CssClass="form-control">
         </asp:DropDownList>
       </div>
     </div>
     <div class="form-group">
-      <label class="col-lg-2 control-label">Selects</label>
+      <label class="col-lg-2 control-label">Equipo</label>
       <div class="col-lg-10">
         <asp:DropDownList ID="cmbEquipment" runat="server" CssClass="form-control">
         </asp:DropDownList>

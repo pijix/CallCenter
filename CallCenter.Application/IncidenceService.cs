@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
-using System.IO;
 using System.Linq;
 using CallCenter.CORE.Domain;
-using CallCenter.CORE.Domain.Enums;
 using CallCenter.DAL;
 
 namespace CallCenter.Application
@@ -95,6 +92,7 @@ namespace CallCenter.Application
                 editIncidence.Priority = incidence.Priority;
                 editIncidence.Status = incidence.Status;
                 editIncidence.UserId = incidence.UserId;
+                editIncidence.UserName = incidence.UserName;
                 _dbContext.SaveChanges();
                 return editIncidence;
             }
@@ -124,6 +122,38 @@ namespace CallCenter.Application
             catch (Exception ex)
             {
                 throw new Exception("Error al Eliminar la Incidencia: " + ex.InnerException.Message);
+            }
+        }
+
+        /// <summary>
+        /// Retorna incidencias agrupadas por usuario, mas de 2
+        /// </summary>
+        /// <returns>Objeto con Usuario y Total Incidencias</returns>
+        public Object TotalIncidencesByUser()
+        {
+            try
+            {
+                return _dbContext.Incidences.GroupBy(a => a.UserId).Where(a => a.Count()>2).Select(a => new {UserName = a.FirstOrDefault().UserName, IncidencesCount = a.Count()}).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al calular incidencias: " + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Retorna incidencias agrupadas por equipo, mas de 2
+        /// </summary>
+        /// <returns>Objeto con Equipo y Total Incidencias</returns>
+        public Object TotalIncidencesByEquipment()
+        {
+            try
+            {
+                return _dbContext.Incidences.GroupBy(a=>a.Equipment.Id).Where(a => a.Count()>2).Select(a => new { EquipmentName = a.FirstOrDefault().Equipment.Name, IncidencesCount = a.Count() }).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al calular incidencias: " + ex.InnerException.Message);
             }
         }
     }

@@ -17,7 +17,6 @@ namespace CallCenter.Web.App.Admin
         private IncidenceService _service;
         private EquipmentService _equipmentService;
         private MessageService _messageService;
-        private Guid _userId;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -25,14 +24,6 @@ namespace CallCenter.Web.App.Admin
             _service = new IncidenceService(_dbContext);
             _equipmentService = new EquipmentService(_dbContext);
             _messageService = new MessageService(_dbContext);
-
-            // Recuperamos el id de Usuario
-            //Cogemos la información del usuario actual, en userId cogeremos su id o un guid vacio si no esta logueado
-            var user = Membership.GetUser();
-            if (user != null && user.ProviderUserKey != null)
-                _userId = (Guid)user.ProviderUserKey;
-            else
-                _userId = Guid.Empty;
 
             // Si es PostBack no hacemos nada, solo quando carga la página
             if (Page.IsPostBack) return;
@@ -93,16 +84,16 @@ namespace CallCenter.Web.App.Admin
                 {
                     Id = Guid.NewGuid(),
                     UserId = new Guid(cmdUsuario.SelectedValue),
-                    DateCreation = DateTime.Today.Date,
+                    UserName = cmdUsuario.SelectedItem.Text,
+                    DateCreation = DateTime.Now,
                     IncidenceTitle = txtTitle.Text,
                     Priority = (EnumIncidencePriority)Enum.Parse(typeof(EnumIncidencePriority), cmbPriority.SelectedItem.Text),
                     Status = (EnumIncidenceStatus)Enum.Parse(typeof(EnumIncidenceStatus), cmbStatus.SelectedItem.Text)
                 };
 
-
+                if(string.IsNullOrWhiteSpace(cmbEquipment.SelectedValue)) throw new Exception("El equipo seleccionado no es válido!");
                 var equipment = _equipmentService.GetById(new Guid(cmbEquipment.SelectedValue));
-                if (equipment != null)
-                    newIncidence.Equipment = equipment;
+                newIncidence.Equipment = equipment;
 
                 _service.Add(newIncidence);
                 _dbContext.SaveChanges();
@@ -126,6 +117,7 @@ namespace CallCenter.Web.App.Admin
                 exists.Priority = (EnumIncidencePriority)Enum.Parse(typeof(EnumIncidencePriority), cmbPriority.SelectedItem.Text);
                 exists.Status = (EnumIncidenceStatus)Enum.Parse(typeof(EnumIncidenceStatus), cmbStatus.SelectedItem.Text);
                 exists.UserId = new Guid(cmdUsuario.SelectedValue);
+                exists.UserName = cmdUsuario.SelectedItem.Text;
 
                 var equipment = _equipmentService.GetById(new Guid(cmbEquipment.SelectedValue));
                 if (equipment != null)
@@ -149,7 +141,7 @@ namespace CallCenter.Web.App.Admin
                     throw new Exception("No ha sido posible borrar la Incidencia");
 
                 _dbContext.SaveChanges();
-                Response.Redirect("~/App/Admin/EquipmentList.aspx");
+                Response.Redirect("~/App/Admin/IncidenceList.aspx");
             }
             catch (Exception ex)
             {

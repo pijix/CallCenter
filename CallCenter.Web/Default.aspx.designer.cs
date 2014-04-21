@@ -10,7 +10,25 @@
 namespace CallCenter.Web {
     
     
-    public partial class _Default {
+    public partial class Default {
+        
+        /// <summary>
+        /// UserTotalIncidences control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView UserTotalIncidences;
+        
+        /// <summary>
+        /// EquipmentTotalIncidences control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView EquipmentTotalIncidences;
         
         /// <summary>
         /// ListIncidence control.

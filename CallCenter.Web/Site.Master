@@ -5,7 +5,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <title><%: Page.Title %></title>
-    <link href="Content/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
 </head>
@@ -14,10 +14,10 @@
 
         <div class="container">
             <div class="row">
-                <div class="col-xs-2">
+                <div class="col-lg-2">
                     <h3>CallCenter</h3>
                 </div>
-                <div class="col-xs-8" style="margin-top: 15px; margin-bottom: 30px;">
+                <div class="col-lg-8" style="margin-top: 15px; margin-bottom: 30px;">
                      <asp:Menu ID="MainMenu" runat="server" DataSourceID="SiteMapDataSource1" StaticDisplayLevels="2" OnMenuItemDataBound="MainMenu_MenuItemDataBound" >
                         <StaticMenuStyle CssClass="nav nav-pills" />
                         <StaticSelectedStyle BackColor="#2c3e50" ForeColor="#ffffff"/>
@@ -27,7 +27,10 @@
                      </asp:Menu>
                     <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />      
                 </div>
-                <div class="col-xs-2 right text-right" style="margin-top: 20px;">
+                <div class="col-lg-2 right text-right" style="margin-top: 20px;">
+                    <div class="pull-left">
+                        <a href="http://www.teamviewer.com" target="_new"><img src="/Content/images/teamviewer.jpg" style="margin-right: 5px" alt="Soporte Remoto"/></a>
+                    </div>
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                             <AnonymousTemplate>
                                     <a id="loginLink" runat="server" href="~/Account/Login" class="btn btn-sm btn-warning">Log in</a>
@@ -44,19 +47,19 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-12">
+                <div class="col-lg-12">
                     <!-- contenido del body -->
                     <asp:ContentPlaceHolder runat="server" ID="MainContent" />
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-12 text-center" style="margin-top: 20px">
+                <div class="col-lg-12 text-center" style="margin-top: 20px">
                     <h6>&copy; <%: DateTime.Now.Year %> - Call Center - Jordi Pijuan Galceran | SEAS - Ingenieria Web</h6>
                 </div>
             </div>
         </div>
     </form>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-    <script src="~/Content/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/Content/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>

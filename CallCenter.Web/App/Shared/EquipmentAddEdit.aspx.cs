@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 using CallCenter.Application;
 using CallCenter.CORE.Domain;
@@ -50,6 +52,7 @@ namespace CallCenter.Web.App.Shared
             else
             {
                 lblResult.Text = "No se ha encontrado el registro para editar";
+                lblResult.Visible = true;
             }
         }
 
@@ -71,6 +74,7 @@ namespace CallCenter.Web.App.Shared
             catch (Exception ex)
             {
                 lblResult.Text = ex.Message;
+                lblResult.Visible = true;
             }            
         }
 
@@ -91,6 +95,7 @@ namespace CallCenter.Web.App.Shared
             catch (Exception ex)
             {
                 lblResult.Text = ex.Message;
+                lblResult.Visible = true;
             }
         }
 
@@ -98,13 +103,14 @@ namespace CallCenter.Web.App.Shared
         {
             try
             {
-                if(_service.Delete(new Guid(txtId.Value)))
+                if (_service.Delete(new Guid(txtId.Value)))
                     // Una vez insertado el registro redirigimos al listado
                     Response.Redirect("EquipmentList.aspx");
             }
             catch (Exception ex)
             {
                 lblResult.Text = ex.Message;
+                lblResult.Visible = true;
             }
         }
 

@@ -15,6 +15,11 @@ namespace CallCenter.CORE.Domain
         /// Identificador del usuario que ha creado la incidencia
         /// </summary>
         public Guid UserId { get; set; }
+        
+        /// <summary>
+        /// Nombre del usuario que ha creado la incidencia
+        /// </summary>
+        public string UserName { get; set; }
 
         /// <summary>
         /// Título de la Incidencia
