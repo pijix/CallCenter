@@ -61,7 +61,7 @@ namespace CallCenter.Web
 
             var t = txtBuscar.Text;
             ListIncidence.DataSource = _incidenceService.GetAll()
-                .Where(a =>  a.Equipment.Name.ToUpper().Contains(t.ToUpper()) || a.UserName.Contains(t) || a.IncidenceTitle.Contains(t));
+                .Where(a =>  a.Equipment.Name.ToUpper().Contains(t.ToUpper()) || a.UserName.Contains(t) || a.IncidenceTitle.Contains(t)).ToList();
             ListIncidence.DataBind();
         }
     }

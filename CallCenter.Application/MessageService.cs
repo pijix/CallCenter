@@ -55,7 +55,7 @@ namespace CallCenter.Application
         {
             try
             {
-                var messages = GetByIncidence(incidenceId);
+                var messages = GetByIncidence(incidenceId).ToList();
                 foreach (var message in messages)
                 {
                     _dbContext.Messages.Remove(message);

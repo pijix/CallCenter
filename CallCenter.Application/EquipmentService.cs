@@ -21,9 +21,9 @@ namespace CallCenter.Application
         /// Develve todos los equipos
         /// </summary>
         /// <returns>Lista de equipos</returns>
-        public List<Equipment> GetAll()
+        public IQueryable<Equipment> GetAll()
         {
-            return _dbContext.Equipments.ToList();
+            return _dbContext.Equipments;
         }
 
 

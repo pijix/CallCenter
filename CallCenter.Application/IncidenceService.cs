@@ -22,9 +22,9 @@ namespace CallCenter.Application
         /// Método que retorna todas las incidencias
         /// </summary>
         /// <returns>Lista de incidencias</returns>
-        public List<Incidence> GetAll()
+        public IQueryable<Incidence> GetAll()
         {
-            return _dbContext.Incidences.Include(a=>a.Equipment).ToList();
+            return _dbContext.Incidences.Include(a => a.Equipment);
         }
 
         /// <summary>
@@ -42,9 +42,9 @@ namespace CallCenter.Application
         /// </summary>
         /// <param name="userId">identificador del usuario</param>
         /// <returns>Lista de incidencias</returns>
-        public List<Incidence> GetByUserId(Guid userId)
+        public IQueryable<Incidence> GetByUserId(Guid userId)
         {
-            return _dbContext.Incidences.Select(a=>a).Where(u=>u.UserId == userId).ToList();
+            return _dbContext.Incidences.Select(a=>a).Where(u=>u.UserId == userId);
         }
 
         /// <summary>
@@ -52,9 +52,9 @@ namespace CallCenter.Application
         /// </summary>
         /// <param name="equipmentId">identificador del equipo</param>
         /// <returns>Lista de incidencias</returns>
-        public List<Incidence> GetByEquipment(Guid equipmentId)
+        public IQueryable<Incidence> GetByEquipment(Guid equipmentId)
         {
-            return _dbContext.Incidences.Select(a => a).Where(e => e.Equipment.Id == equipmentId).ToList();
+            return _dbContext.Incidences.Select(a => a).Where(e => e.Equipment.Id == equipmentId);
         }
 
        

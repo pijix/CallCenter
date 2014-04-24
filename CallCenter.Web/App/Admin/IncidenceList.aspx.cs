@@ -22,7 +22,7 @@ namespace CallCenter.Web.App.Admin
             EquipmentTotalIncidences.DataBind();
 
             // Consultamos todas las incidencias y las mostramos por pantalla ordenadas               
-            ListIncidence.DataSource = incidenceService.GetAll().OrderBy(a=>a.Priority).ThenBy(a=>a.DateCreation);
+            ListIncidence.DataSource = incidenceService.GetAll().OrderBy(a=>a.Priority).ThenBy(a=>a.DateCreation).ToList();
             ListIncidence.DataBind();
             
         }

@@ -24,7 +24,7 @@ namespace CallCenter.Web.App.Shared
                 userId = Guid.Empty;
 
             // Consultamos todas las incidencias y las mostramos por pantalla ordenadas               
-            ListEquipment.DataSource = equipmentService.GetAll().OrderBy(o=>o.Name);
+            ListEquipment.DataSource = equipmentService.GetAll().OrderBy(o=>o.Name).ToList();
             ListEquipment.DataBind();
 
         }

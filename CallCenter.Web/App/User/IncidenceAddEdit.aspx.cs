@@ -159,7 +159,7 @@ namespace CallCenter.Web.App.User
         {
 
             // cargamos la info de los equipos
-            var equipments = _equipmentService.GetAll();
+            var equipments = _equipmentService.GetAll().ToList();
             foreach (var equipment in equipments)
             {
                 var li = new ListItem(equipment.Name, equipment.Id.ToString());
