@@ -137,11 +137,8 @@ namespace CallCenter.Web.App.Admin
         {
             try
             {
-                if (_service.Delete(new Guid(guidIncidence.ToString())))
-                    throw new Exception("No ha sido posible borrar la Incidencia");
-
-                _dbContext.SaveChanges();
-                Response.Redirect("~/App/Admin/IncidenceList.aspx");
+                if (_service.Delete(new Guid(guidIncidence.Value)))
+                    Response.Redirect("IncidenceList.aspx");
             }
             catch (Exception ex)
             {

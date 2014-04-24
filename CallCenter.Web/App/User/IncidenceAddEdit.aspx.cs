@@ -103,7 +103,6 @@ namespace CallCenter.Web.App.User
                 newIncidence.Equipment = equipment;
                 
                 _service.Add(newIncidence);
-                _dbContext.SaveChanges();
                 Response.Redirect("IncidenceList.aspx");
             }
             catch (Exception ex)
@@ -145,11 +144,8 @@ namespace CallCenter.Web.App.User
         {
             try
             {
-                if (_service.Delete(new Guid(guidIncidence.ToString())))
-                    throw new Exception("No ha sido posible borrar la Incidencia");
-                
-                _dbContext.SaveChanges();
-                Response.Redirect("EquipmentList.aspx");
+                if (_service.Delete(new Guid(guidIncidence.Value)))
+                    Response.Redirect("IncidenceList.aspx");
             }
             catch (Exception ex)
             {
@@ -157,7 +153,6 @@ namespace CallCenter.Web.App.User
                 lblResult.Visible = true;
 
             }
-
         }
 
         private void LoadListsData()

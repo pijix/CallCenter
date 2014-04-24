@@ -17,28 +17,7 @@ namespace CallCenter.Application
             _dbContext = dbContext;
         }
 
-        /// <summary>
-        /// Método que retorna todos los mensajes
-        /// </summary>
-        /// <returns>Lista de Mensajes</returns>
-        public List<Message> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-
-        /// <summary>
-        /// Método que retorna un mensaje según Id
-        /// </summary>
-        /// <returns>Mensaje</returns>
-        public Message GetById()
-        {
-            throw new NotImplementedException();
-        }
-
-
-
-        /// <summary>
+    /// <summary>
         /// Método que retorna todos los mensajes de un usuario
         /// </summary>
         /// <param name="incidenceId">Id de Usuario</param>
@@ -69,27 +48,25 @@ namespace CallCenter.Application
         }
 
         /// <summary>
-        /// Método para editar un mensaje
+        /// Elimina todos los mensajes de una incidencia
         /// </summary>
-        /// <param name="message">enditdad</param>
-        /// <returns>Mensaje Editado</returns>
-        public Message Update(Message message)
+        /// <param name="incidenceId">entidad</param>
+        public bool DeleleMessages(Guid incidenceId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var messages = GetByIncidence(incidenceId);
+                foreach (var message in messages)
+                {
+                    _dbContext.Messages.Remove(message);
+                }
+                _dbContext.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al añadir el Mensaje: " + ex.InnerException.Message);
+            }
         }
-
-        /// <summary>
-        /// Método que elimina un mensaje
-        /// </summary>
-        /// <param name="messageId">Id de Cliente</param>
-        /// <returns>Si correcto o no la eliminación</returns>
-        public bool Delete(Guid messageId)
-        {
-            throw new NotImplementedException();
-        }
-
-       
-
-
     }
 }
